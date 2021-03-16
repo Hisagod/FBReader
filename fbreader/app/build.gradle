@@ -17,8 +17,8 @@ dependencies {
 }
 
 android {
-	compileSdkVersion 26
-	buildToolsVersion '26.0.2'
+	compileSdkVersion compile_sdk_version
+	buildToolsVersion build_tools_version
 
 	lintOptions {
 		abortOnError false
@@ -27,10 +27,10 @@ android {
 	useLibrary 'org.apache.http.legacy'
 
 	defaultConfig {
-		minSdkVersion 21
-		targetSdkVersion 26
-		versionCode 1
-		versionName "1.0.0"
+		minSdkVersion min_sdk_version
+		targetSdkVersion target_sdk_version
+		versionCode version_code
+		versionName version_name
 		ndk {
 			abiFilters "armeabi-v7a","x86"
 		}
