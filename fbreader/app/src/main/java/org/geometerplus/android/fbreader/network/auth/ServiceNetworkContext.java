@@ -19,15 +19,13 @@
 
 package org.geometerplus.android.fbreader.network.auth;
 
-import java.net.URI;
 import java.util.Map;
 
 import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
-import android.text.TextUtils;
+import androidx.core.app.NotificationCompat;
 
 import org.geometerplus.zlibrary.core.resources.ZLResource;
 

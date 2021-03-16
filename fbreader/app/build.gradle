@@ -14,6 +14,9 @@ dependencies {
 	compile files('libs/nanohttpd-2.0.5.jar')
 	compile files('libs/httpmime-4.2.5.jar')
 	compile files('libs/pdfparse.jar')
+
+	implementation "androidx.appcompat:appcompat:1.2.0"
+	implementation 'com.blankj:utilcodex:1.30.6'
 }
 
 android {
@@ -51,15 +54,6 @@ android {
 		main.jni.srcDirs = []
 	}
 
-//	signingConfigs {
-//		release {
-//			storeFile file(RELEASE_STORE_FILE)
-//			storePassword RELEASE_STORE_PASSWORD
-//			keyAlias RELEASE_KEY_ALIAS
-//			keyPassword RELEASE_KEY_PASSWORD
-//		}
-//	}
-
 	buildTypes {
 		release {
 			minifyEnabled false
@@ -70,34 +64,5 @@ android {
 			buildConfigField "String", "FBNETWORK_SECRET", "${FBREADER_ORG_FBNETWORK_SECRET}"
 		}
 	}
-
-//	applicationVariants.all { variant ->
-//		def generateHelpTask = project.tasks.create "generateHelp${variant.name.capitalize()}", Exec
-//		generateHelpTask.commandLine('src/main/help/generate.py', 'src/main/help/proto', 'src/main/help/html', variant.outputs[0].processResources.assetsDir.path + '/data/intro')
-//		variant.mergeResources.dependsOn(generateHelpTask)
-//	}
 }
 
-//android.applicationVariants.all { variant ->
-//	def abiVersion = variant.productFlavors.get(0).versionCode
-//
-//	def baseCode = 0
-//	def version = new File("$projectDir/VERSION").text.trim()
-//	if (version.matches('\\d*\\.\\d* beta \\d*')) {
-//		def parts = version.split('[ .]')
-//		baseCode = parts[0].toInteger() * 1000000 + parts[1].toInteger() * 10000 - 5000 + parts[3].toInteger() * 100
-//	} else if (version.matches('\\d*\\.\\d* rc \\d*')) {
-//		def parts = version.split('[ .]')
-//		baseCode = parts[0].toInteger() * 1000000 + parts[1].toInteger() * 10000 - 2500 + parts[3].toInteger() * 100
-//	} else if (version.matches('\\d*\\.\\d*')) {
-//		def parts = version.split('\\.')
-//		baseCode = parts[0].toInteger() * 1000000 + parts[1].toInteger() * 10000
-//	} else if (version.matches('\\d*\\.\\d*\\.\\d*')) {
-//		def parts = version.split('\\.')
-//		baseCode = parts[0].toInteger() * 1000000 + parts[1].toInteger() * 10000 + parts[2].toInteger() * 100
-//	} else {
-//		throw new IllegalArgumentException('Unsupported version format: ' + version)
-//	}
-//
-//	variant.mergedFlavor.versionCode = baseCode + 10 + abiVersion
-//}
