@@ -34,6 +34,7 @@ import android.view.*;
 import android.widget.RelativeLayout;
 
 import com.blankj.utilcode.constant.PermissionConstants;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 
 import org.geometerplus.zlibrary.core.application.ZLApplicationWindow;
@@ -73,6 +74,9 @@ import org.geometerplus.android.fbreader.tips.TipsActivity;
 
 import org.geometerplus.android.util.*;
 
+/**
+ * 第一个页面
+ */
 public final class FBReader extends FBReaderMainActivity implements ZLApplicationWindow {
     public static final int RESULT_DO_NOTHING = RESULT_FIRST_USER;
     public static final int RESULT_REPAINT = RESULT_FIRST_USER + 1;
@@ -161,8 +165,18 @@ public final class FBReader extends FBReaderMainActivity implements ZLApplicatio
                 NotificationUtil.drop(this, myBook);
             }
         }
+        /*
+         * 打开app 时 正常myBook为空 intent.getData 为空
+         * 在主线程运行
+         *
+         * 正常打开时myBook， bookmark， action 三个参数都是空
+         * */
         Config.Instance().runOnConnect(new Runnable() {
             public void run() {
+                LogUtils.d("FBReader -> openBook run thread: " + Thread.currentThread());
+                LogUtils.d("FBReader -> openBook run myBook: " + myBook);
+                LogUtils.d("FBReader -> openBook run bookmark: " + bookmark);
+                LogUtils.d("FBReader -> openBook run action: " + action);
                 myFBReaderApp.openBook(myBook, bookmark, action, myNotifier);
                 AndroidFontUtil.clearFontCache();
             }
@@ -585,6 +599,7 @@ public final class FBReader extends FBReaderMainActivity implements ZLApplicatio
             myOpenBookIntent = null;
             getCollection().bindToService(this, new Runnable() {
                 public void run() {
+                    //打开书本
                     openBook(intent, null, true);
                 }
             });
