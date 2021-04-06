@@ -45,13 +45,13 @@ public final class CurlAnimationProvider extends AnimationProvider {
 
     public CurlAnimationProvider(BitmapManager bitmapManager) {
         super(bitmapManager);
-
         myBackPaint.setAntiAlias(true);
         myBackPaint.setAlpha(0x40);
 
         myEdgePaint.setAntiAlias(true);
         myEdgePaint.setStyle(Paint.Style.FILL);
-//        myEdgePaint.setShadowLayer(15, 0, 0, Color.BLACK);
+        //阴影去掉，可能没那么卡
+//        myEdgePaint.setShadowLayer(15, 0, 0, 0xC0000000);
     }
 
     private Bitmap myBuffer;
